@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xóa Background Hình Ảnh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-magic"></i> Xóa Background Hình Ảnh</h1>
+            <p>Sử dụng AI để xóa background một cách tự động và chính xác</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Chọn hình ảnh để xóa background</h3>
+                        <p>Kéo thả file vào đây hoặc click để chọn file</p>
+                        <p class="file-types">Hỗ trợ: PNG, JPG, JPEG, GIF, BMP, TIFF, WEBP</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-folder-open"></i> Chọn File
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="preview-container">
+                    <div class="image-preview">
+                        <h3>Hình ảnh gốc</h3>
+                        <img id="originalImage" alt="Hình ảnh gốc">
+                    </div>
+                    <div class="image-preview">
+                        <h3>Kết quả sau khi xóa background</h3>
+                        <div id="resultContainer">
+                            <div class="loading" id="loading" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>Đang xử lý...</p>
+                            </div>
+                            <img id="resultImage" alt="Kết quả" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="processBtn" onclick="processImage()">
+                        <i class="fas fa-magic"></i> Xóa Background
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetApp()">
+                        <i class="fas fa-redo"></i> Làm mới
+                    </button>
+                </div>
+            </div>
+
+            <div class="download-section" id="downloadSection" style="display: none;">
+                <div class="download-container">
+                    <h3><i class="fas fa-check-circle"></i> Xử lý thành công!</h3>
+                    <p>Hình ảnh đã được xóa background thành công.</p>
+                    <button class="btn btn-success" id="downloadBtn">
+                        <i class="fas fa-download"></i> Tải xuống
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> Hướng dẫn sử dụng</h3>
+                <ul>
+                    <li>Chọn hình ảnh có định dạng được hỗ trợ</li>
+                    <li>Kích thước file tối đa: 16MB</li>
+                    <li>Kết quả sẽ được lưu dưới định dạng PNG</li>
+                    <li>Quá trình xử lý có thể mất vài giây</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
